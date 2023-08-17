@@ -1,0 +1,3 @@
+this repo contains files for programming a simple shell.
+
+update made frequently...
