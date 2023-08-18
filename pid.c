@@ -1,43 +1,35 @@
 #include "shell.h"
 
 /**
-  * pid - make a new process
+  * _pid - make a new process
   * @arg: commands
   * Return: 1 on success
   */
 
-int pid(char **arg)
+int _pid(char **arg)
 {
-	pid_t pid;
+	pid_t child_pid;
 	int child_status;
 
-	pid = fork();
+	child_pid = fork();
 
-	if (pid == 0)
+	if (child_pid == 0)
 	{
 		if (execvp(arg[0], arg) == -1)
 		{
-			perror("ERROR: pid");
+			perror("ERROR: child pid");
 		}
 		exit(EXIT_FAILURE);
 	}
-	else if (pid < 0)
+	else if (child_pid < 0)
 	{
-		perror("ERROR: fork failed");
+		perror("ERROR: forking");
 	}
 	else
 	{
-		waitpid(pid, &child_status, 0);
-
-		if (WIFEXITED(child_status))
-		{
-			return (WEXITSTATUS(child_status));
-		}
-		else
-		{
-			printf("terminates\n");
-			return (-1);
-		}
+		do {
+			waitpid(child_pid, &child_status, WUNTRACED);
+		} while (!WIFEXITED(child_status) && !WIFSIGNALED(child_status));
 	}
-	return (0);
+	return (-1);
 }

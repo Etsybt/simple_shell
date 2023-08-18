@@ -1,13 +1,11 @@
 #include "shell.h"
-
 /**
   * standard_stream - reads input
   * Return: input
   */
-
 char *standard_stream(void)
 {
-	int chars, n = 0, size = 1024;
+	int size = 1024, n = 0, chars;
 	char *input = malloc(sizeof(char) * size);
 
 	if (input == NULL)
@@ -15,7 +13,6 @@ char *standard_stream(void)
 		fprintf(stderr, "allocation error");
 		exit(EXIT_FAILURE);
 	}
-
 	while (1)
 	{
 		chars = getchar();

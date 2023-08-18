@@ -11,17 +11,9 @@ int my_own_env(char **arg)
 	int n = 0;
 	(void)(**arg);
 
-	while (environ[n] != NULL)
+	while (environ[n])
 	{
-		size_t length = strlen(environ[n]);
-		ssize_t bytes = write(STDOUT_FILENO, environ[n], length);
-
-		if (bytes != (ssize_t)length)
-		{
-			perror("my_own_env: ERROR");
-			return (-1);
-		}
-
+		write(STDOUT_FILENO, environ[n], strlen(environ[n]));
 		write(STDOUT_FILENO, "\n", 1);
 		n++;
 	}

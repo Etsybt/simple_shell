@@ -8,11 +8,9 @@
 
 int my_own_exit(char **arg)
 {
-	if (arg[1] != NULL)
+	if (arg[1])
 	{
-		int exit_status = atoi(arg[1]);
-
-		return (exit_status);
+		return (atoi(arg[1]));
 	}
 	else
 	{

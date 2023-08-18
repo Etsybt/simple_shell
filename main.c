@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
   * main - main func calls either interactive or non_interactive shell
   * Return: 0

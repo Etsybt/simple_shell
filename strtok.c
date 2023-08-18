@@ -8,9 +8,9 @@
 
 char **_strtok(char *input)
 {
-	char *token;
 	int size = 64, n = 0;
 	char **str = malloc(size * sizeof(char *));
+	char *token;
 
 	if (!str)
 	{
@@ -19,7 +19,7 @@ char **_strtok(char *input)
 	}
 
 	token = strtok(input, WHITESPACE_DELIM);
-	while (str != NULL)
+	while (token != NULL)
 	{
 		if (token[0] == '#')
 		{

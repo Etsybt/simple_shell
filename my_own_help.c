@@ -8,20 +8,19 @@
 
 int my_own_help(char **arg)
 {
-	const char *built_ins_implement[] = {
+	char *built_ins_implement[] = {
 		"exit",
 		"cd",
 		"env",
 		"help"
 	};
-	size_t num = sizeof(built_ins_implement) / sizeof(built_ins_implement[0]);
-	size_t n = 0;
+	unsigned int n = 0;
 	(void)(**arg);
 
 	printf("\n-help simple shell-\n");
 	printf("command:\n");
 
-	for (; n < num; n++)
+	for (; n < sizeof(built_ins_implement) / sizeof(char *); n++)
 	{
 		printf("  -> %s\n", built_ins_implement[n]);
 	}

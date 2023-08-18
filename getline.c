@@ -22,8 +22,8 @@ char *_getline(void)
 		}
 		else
 		{
-			perror("could not read input");
 			free(input);
+			perror("could not read input");
 			exit(EXIT_FAILURE);
 		}
 	}
