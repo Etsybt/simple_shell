@@ -14,7 +14,7 @@ extern char **environ;
 
 
 #define WHITESPACE_DELIM " \t\r\n\a"
-
+int main(void);
 
 
 

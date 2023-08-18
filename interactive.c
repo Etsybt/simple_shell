@@ -11,22 +11,10 @@ void interactive(void)
 	char **arg;
 	int status = -1;
 
-	while (1)
-	{
+	do {
 		printf("Nouha_SHELL$ ");
-
 		input = _getline();
-
-		if (!input)
-			break;
-
 		arg = _strtok(input);
-
-		if (!arg)
-		{
-			free(input);
-			continue;
-		}
 		status = execve_arg(arg);
 
 		free(input);
@@ -36,5 +24,5 @@ void interactive(void)
 		{
 			exit(status);
 		}
-	}
+	} while (status == -1);
 }
