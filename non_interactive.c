@@ -9,14 +9,16 @@ void no_interactive(void)
 {
 	char *input;
 	char **arg;
-	int status = -1;
+	int i = 0, status = -1;
 
 	do {
 		input = standard_stream();
-		arg = _strtok(input);
+		arg = my_strtok(input);
 		status = execve_arg(arg);
 
 		free(input);
+		for (; arg[i] != NULL; i++)
+			free(arg[i]);
 		free(arg);
 
 		if (status >= 0)

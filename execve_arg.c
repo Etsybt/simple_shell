@@ -12,6 +12,8 @@ int execve_arg(char **arg)
 		"exit",
 		"cd",
 		"env",
+		"setenv",
+		"unsetenv",
 		"help"
 	};
 
@@ -19,14 +21,27 @@ int execve_arg(char **arg)
 		&my_own_exit,
 		&my_own_cd,
 		&my_own_env,
+		&my_own_setenv,
+		&my_own_unsetenv,
 		&my_own_help
 	};
 
 	unsigned int n = 0;
+	int i = 0;
 
 	if (arg[0] == NULL)
 	{
 		return (-1);
+	}
+
+	for (; arg[i] != NULL; i++)
+	{
+		if (strcmp(arg[i], "$$") == 0)
+		{
+			free(arg[i]);
+			arg[i] = malloc(10);
+			snprintf(arg[i], 10, "%d", getpid());
+		}
 	}
 
 	for (; n < sizeof(built_ins_implement) / sizeof(char *); n++)

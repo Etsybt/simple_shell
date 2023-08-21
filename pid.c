@@ -1,5 +1,6 @@
 #include "shell.h"
 
+int last_exit_status = 0;
 /**
   * _pid - make a new process
   * @arg: commands
@@ -17,7 +18,7 @@ int _pid(char **arg)
 	{
 		if (execvp(arg[0], arg) == -1)
 		{
-			perror("ERROR: child pid");
+			perror(arg[0]);
 		}
 		exit(EXIT_FAILURE);
 	}
@@ -30,6 +31,7 @@ int _pid(char **arg)
 		do {
 			waitpid(child_pid, &child_status, WUNTRACED);
 		} while (!WIFEXITED(child_status) && !WIFSIGNALED(child_status));
+		last_exit_status = WEXITSTATUS(child_status);
 	}
 	return (-1);
 }

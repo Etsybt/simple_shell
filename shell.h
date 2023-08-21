@@ -16,8 +16,8 @@ extern char **environ;
 void interactive(void);
 void no_interactive(void);
 /* ---- referenced functions ---- */
-char *_getline(void);
-char **_strtok(char *input);
+char *my_getline(void);
+char **my_strtok(char *input);
 int execve_arg(char **arg);
 int _pid(char **arg);
 char *standard_stream(void);
@@ -25,6 +25,8 @@ char *standard_stream(void);
 int my_own_exit(char **arg);
 int my_own_cd(char **arg);
 int my_own_env(char **arg);
+int my_own_setenv(char **arg);
+int my_own_unsetenv(char **arg);
 int my_own_help(char **arg);
 
 #endif /* SHELL_H */

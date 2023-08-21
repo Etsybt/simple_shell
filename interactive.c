@@ -9,15 +9,17 @@ void interactive(void)
 {
 	char *input;
 	char **arg;
-	int status = -1;
+	int i = 0, status = -1;
 
 	do {
 		printf("Nouha_SHELL$ ");
-		input = _getline();
-		arg = _strtok(input);
+		input = my_getline();
+		arg = my_strtok(input);
 		status = execve_arg(arg);
 
 		free(input);
+		for (; arg[i] != NULL; i++)
+			free(arg[i]);
 		free(arg);
 
 		if (status >= 0)
