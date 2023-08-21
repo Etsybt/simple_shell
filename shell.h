@@ -9,19 +9,22 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+
+
 /* ---- macros ---- */
 extern char **environ;
 #define WHITESPACE_DELIM " \t\r\n\a\""
 /* ---- main functions ---- */
-void interactive(void);
-void no_interactive(void);
+void shell_repl(void);
+void batch_mode(void);
 /* ---- referenced functions ---- */
 char *my_getline(void);
 char **my_strtok(char *input);
-int execve_arg(char **arg);
+int expand_variables(char **arg);
+int track_command(char **arg);
 int _pid(char **arg);
+int _pid2(char **arg);
 char *standard_stream(void);
-
 int my_own_exit(char **arg);
 int my_own_cd(char **arg);
 int my_own_env(char **arg);

@@ -1,12 +1,13 @@
 #include "shell.h"
 
 /**
-  * execve_arg - mainf fun
+  * track_command
+  - mainf fun
   * @arg: commands
   * Return: 1 on success
   */
 
-int execve_arg(char **arg)
+int track_command(char **arg)
 {
 	char *built_ins_implement[] = {
 		"exit",
@@ -43,6 +44,8 @@ int execve_arg(char **arg)
 			snprintf(arg[i], 10, "%d", getpid());
 		}
 	}
+
+	expand_variables(arg);
 
 	for (; n < sizeof(built_ins_implement) / sizeof(char *); n++)
 	{

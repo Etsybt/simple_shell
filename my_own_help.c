@@ -12,18 +12,19 @@ int my_own_help(char **arg)
 		"exit",
 		"cd",
 		"env",
+		"setenv",
+		"unsetenv",
 		"help"
 	};
-	unsigned int n = 0;
 	(void)(**arg);
+	printf("\n-the manual for the built-in commands-\n");
+	printf(" %s ---> EXIT the program. <log out>\n", built_ins_implement[0]);
+	printf(" %s ---> change directories.\n", built_ins_implement[1]);
+	printf(" %s ---> displays the environment.\n", built_ins_implement[2]);
+	printf(" %s ---> sets a new environment variable.\n", built_ins_implement[3]);
+	printf(" %s ---> removes an environment variable.\n", built_ins_implement[4]);
+	printf(" %s ---> displays the program manual\n", built_ins_implement[5]);
 
-	printf("\n-help simple shell-\n");
-	printf("command:\n");
-
-	for (; n < sizeof(built_ins_implement) / sizeof(char *); n++)
-	{
-		printf("  -> %s\n", built_ins_implement[n]);
-	}
-	printf("use the man command.\n\n");
+	printf("\n\nfor other commands use man + command_name.\n\n");
 	return (-1);
 }

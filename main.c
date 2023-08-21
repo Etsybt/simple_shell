@@ -8,11 +8,11 @@ int main(void)
 {
 	if (isatty(STDIN_FILENO) == 1)
 	{
-		interactive();
+		shell_repl();
 	}
 	else
 	{
-		no_interactive();
+		batch_mode();
 	}
 	return (0);
 }
