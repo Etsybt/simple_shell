@@ -1,5 +1,8 @@
 #include "shell.h"
-
+/**
+  * my_getline - displays the input
+  * Return: void
+  */
 char *my_getline(void)
 {
 	int size = 1024;

@@ -9,22 +9,34 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+typedef struct {
+	int last_exit_status;
+} ShellInfo;
 
-
-/* ---- macros ---- */
 extern char **environ;
+
+
 #define WHITESPACE_DELIM " \t\r\n\a\""
+
+
 /* ---- main functions ---- */
-void shell_repl(void);
-void batch_mode(void);
+void shell_repl(ShellInfo *info);
+void batch_mode(ShellInfo *info);
 /* ---- referenced functions ---- */
 char *my_getline(void);
+
 char **my_strtok(char *input);
+
+int builtin_check(const char *command);
+int builtin_execute(const char *command, char **arg, ShellInfo *info);
+
 int expand_variables(char **arg);
-int track_command(char **arg);
-int _pid(char **arg);
+int track_command(char **arg, ShellInfo *info);
+
+int _pid(char **arg, ShellInfo *info);
 
 char *standard_stream(void);
+
 int my_own_exit(char **arg);
 int my_own_cd(char **arg);
 int my_own_env(char **arg);

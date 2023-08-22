@@ -1,18 +1,15 @@
 #include "shell.h"
-
-int last_exit_status = 0;
 /**
   * _pid - make a new process
   * @arg: commands
+  * @info: for the echo $?
   * Return: 1 on success
   */
-
-/* int _pid(char **arg) */
-int _pid(char **arg)
+int _pid(char **arg, ShellInfo *info)
 {
 	pid_t child_pid;
 	int child_status;
-	
+
 	child_pid = fork();
 
 	if (child_pid == 0)
@@ -32,7 +29,8 @@ int _pid(char **arg)
 		do {
 			waitpid(child_pid, &child_status, WUNTRACED);
 		} while (!WIFEXITED(child_status) && !WIFSIGNALED(child_status));
-		last_exit_status = WEXITSTATUS(child_status);
+
+		info->last_exit_status = WEXITSTATUS(child_status);
 	}
 	return (-1);
 }

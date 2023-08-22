@@ -1,33 +1,12 @@
 #include "shell.h"
-
 /**
-  * track_command
-  - mainf fun
+  * track_command - main func
   * @arg: commands
+  * @info: for the echo $?
   * Return: 1 on success
   */
-
-int track_command(char **arg)
+int track_command(char **arg, ShellInfo *info)
 {
-	char *built_ins_implement[] = {
-		"exit",
-		"cd",
-		"env",
-		"setenv",
-		"unsetenv",
-		"help"
-	};
-
-	int (*built_ins[])(char **) = {
-		&my_own_exit,
-		&my_own_cd,
-		&my_own_env,
-		&my_own_setenv,
-		&my_own_unsetenv,
-		&my_own_help
-	};
-
-	unsigned int n = 0;
 	int i = 0;
 
 	if (arg[0] == NULL)
@@ -47,12 +26,9 @@ int track_command(char **arg)
 
 	expand_variables(arg);
 
-	for (; n < sizeof(built_ins_implement) / sizeof(char *); n++)
+	if (builtin_check(arg[0]))
 	{
-		if (strcmp(arg[0], built_ins_implement[n]) == 0)
-		{
-			return ((*built_ins[n])(arg));
-		}
+		return (builtin_execute(arg[0], arg, info));
 	}
-	return (_pid(arg));
+	return (_pid(arg, info));
 }

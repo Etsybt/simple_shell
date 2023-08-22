@@ -6,13 +6,20 @@
 
 int main(void)
 {
+	ShellInfo shell_info;
+
+	shell_info.last_exit_status = 0;
+
+	shell_repl(&shell_info);
+	batch_mode(&shell_info);
+
 	if (isatty(STDIN_FILENO) == 1)
 	{
-		shell_repl();
+		shell_repl(&shell_info);
 	}
 	else
 	{
-		batch_mode();
+		batch_mode(&shell_info);
 	}
 	return (0);
 }

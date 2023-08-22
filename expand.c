@@ -1,5 +1,9 @@
 #include "shell.h"
-
+/**
+  * expand_variables - expands the variables
+  * @arg: arg
+  * Return: 0
+  */
 int expand_variables(char **arg)
 {
 	int i = 0;

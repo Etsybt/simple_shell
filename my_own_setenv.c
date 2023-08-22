@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+  * my_own_setenv - sets the env variable
+  * @arg: arg
+  * Return: 1 on success
+  */
 int my_own_setenv(char **arg)
 {
 	if (arg[1] == NULL || arg[2] == NULL)
