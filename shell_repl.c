@@ -25,6 +25,7 @@ void shell_repl(void)
 		}
 		status = track_command(arg);
 
+
 		free(input);
 
 		for (; arg[i] != NULL; i++) {

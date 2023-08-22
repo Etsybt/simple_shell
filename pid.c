@@ -7,6 +7,7 @@ int last_exit_status = 0;
   * Return: 1 on success
   */
 
+/* int _pid(char **arg) */
 int _pid(char **arg)
 {
 	pid_t child_pid;
@@ -24,7 +25,7 @@ int _pid(char **arg)
 	}
 	else if (child_pid < 0)
 	{
-		perror("ERROR: forking");
+		perror(arg[0]);
 	}
 	else
 	{

@@ -23,7 +23,7 @@ char **my_strtok(char *input);
 int expand_variables(char **arg);
 int track_command(char **arg);
 int _pid(char **arg);
-int _pid2(char **arg);
+
 char *standard_stream(void);
 int my_own_exit(char **arg);
 int my_own_cd(char **arg);

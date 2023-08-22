@@ -26,4 +26,4 @@ batch_mode <-- the shell non_interactive mode
 
 exit + char : exits the shell, it used to show an error demanding to enter an integer only.
 
-for setenv/unsetenv: the echo $var_name doesn't work
+for setenv/unsetenv: the echo $var_name doesn't work <<--- SOLVED
