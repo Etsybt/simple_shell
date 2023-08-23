@@ -6,17 +6,17 @@
 int my_getchar(void)
 {
 	static char buffer[1024];
-	static int position = 0;
-	static int bytesRead = 0;
+	static int position;
+	static int bytesRead;
 
 	if (position >= bytesRead)
 	{
 		bytesRead = read(STDIN_FILENO, buffer, sizeof(buffer));
 		if (bytesRead <= 0)
 		{
-			return EOF;
+			return (EOF);
 		}
 		position = 0;
 	}
-	return buffer[position++];
+	return (buffer[position++]);
 }
