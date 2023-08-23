@@ -10,6 +10,8 @@ int main(void)
 
 	shell_info.last_exit_status = 0;
 
+	setenv("PATH", "/bin:/usr/bin", 1);
+
 	if (isatty(STDIN_FILENO) == 1)
 	{
 		shell_repl(&shell_info);

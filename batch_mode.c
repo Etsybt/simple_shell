@@ -19,7 +19,7 @@ void batch_mode(ShellInfo *info)
 			perror("Error reading input");
 			exit(EXIT_FAILURE);
 		}
-		arg = my_strtok2(input);
+		arg = my_strtok(input);
 
 		if (!arg)
 		{

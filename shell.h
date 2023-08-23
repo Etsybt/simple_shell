@@ -10,6 +10,12 @@
 #include <sys/wait.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <dirent.h>
+#include <sys/stat.h>
+
+
+#define MAX_PATH_LENGTH 4096
+
 /**
   * ShellInfo - main
   * @last_exit_status: Holds the exit status of the last executed command
@@ -21,6 +27,12 @@ typedef struct
 
 extern char **environ;
 
+
+struct AllocatedTokens
+{
+	char **tokens;
+	size_t count;
+};
 
 
 #define WHITESPACE_DELIM " \t\r\n\a\""
@@ -45,7 +57,7 @@ char **allocate_initial_memory(size_t size);
 char *my_realloc(char **str, size_t *size, size_t new_size);
 void add_token(char **str, size_t *n, size_t *size,
 		const char *start, const char *end);
-char **my_strtok2(char *input);
+char **my_strtok(char *input);
 
 
 
@@ -67,6 +79,8 @@ int builtin_execute(const char *command, char **arg, ShellInfo *info);
 
 int expand_variables(char **arg);
 int track_command(char **arg, ShellInfo *info);
+
+char *find_executable(const char *file);
 
 int _pid(char **arg, ShellInfo *info);
 

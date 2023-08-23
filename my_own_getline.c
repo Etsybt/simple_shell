@@ -44,4 +44,6 @@ char *my_getline(void)
 			input = new_input;
 		}
 	}
+	free(input);
+	return NULL;
 }
