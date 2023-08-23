@@ -37,7 +37,12 @@ char *my_getline(void);
 char *my_strchr(const char *str, int c);
 char *my_strncpy(char *dest, const char *src, size_t n);
 
-char **my_strtok(char *input);
+
+char **allocate_initial_memory(size_t size);
+char **realloc_memory(char **str, size_t *size);
+void add_token(char **str, size_t *n, size_t *size,
+		const char *start, const char *end);
+char **my_strtok2(char *input);
 
 int my_strcmp(const char *s1, const char *s2);
 
