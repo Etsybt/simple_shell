@@ -10,10 +10,17 @@ int _putchar(char c)
 	return (write(1, &c, 1));
 }
 
+/**
+ * _putstr - prints a string
+ * @str: string
+ */
+
 void _putstr(const char *str)
 {
 	const char *ptr = str;
-	for (; *ptr != '\0'; ptr++) {
+
+	for (; *ptr != '\0'; ptr++)
+	{
 		_putchar(*ptr);
 	}
 }
