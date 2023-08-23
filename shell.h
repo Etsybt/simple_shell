@@ -38,7 +38,7 @@ char *my_getline(void);
 
 char *my_strchr(const char *str, int c);
 char *my_strncpy(char *dest, const char *src, size_t n);
-
+char *my_strcpy(char *dest, char *src);
 
 /* ---- my own strtok -----*/
 char **allocate_initial_memory(size_t size);
@@ -60,7 +60,7 @@ int my_atoi(const char *str);
 int _putchar(char c);
 void _putstr(const char *str);
 
-
+void int_to_str(int num, char *str);
 
 int builtin_check(const char *command);
 int builtin_execute(const char *command, char **arg, ShellInfo *info);

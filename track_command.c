@@ -8,6 +8,8 @@
 int track_command(char **arg, ShellInfo *info)
 {
 	int i = 0;
+	int pid = getpid();
+	char pid_str[10];
 
 	if (arg[0] == NULL)
 	{
@@ -20,7 +22,8 @@ int track_command(char **arg, ShellInfo *info)
 		{
 			free(arg[i]);
 			arg[i] = malloc(10);
-			snprintf(arg[i], 10, "%d", getpid());
+			int_to_str(pid, pid_str);
+			my_strcpy(arg[i], pid_str);
 		}
 	}
 
