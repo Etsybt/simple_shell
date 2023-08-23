@@ -17,14 +17,27 @@ int my_own_help(char **arg)
 		"help"
 	};
 	(void)(**arg);
-	printf("\n-the manual for the built-in commands-\n");
-	printf(" %s ---> EXIT the program. <log out>\n", built_ins_implement[0]);
-	printf(" %s ---> change directories.\n", built_ins_implement[1]);
-	printf(" %s ---> displays the environment.\n", built_ins_implement[2]);
-	printf(" %s ---> sets a new environment variable.\n", built_ins_implement[3]);
-	printf(" %s ---> removes an environment variable.\n", built_ins_implement[4]);
-	printf(" %s ---> displays the program manual\n", built_ins_implement[5]);
 
-	printf("\n\nfor other commands use man + command_name.\n\n");
+	_putstr("\n-the manual for the built-in commands-\n");
+	_putstr(" ");
+	_putstr(built_ins_implement[0]);
+	_putstr(" ---> EXIT the program. <log out>\n");
+	_putstr(" ");
+	_putstr(built_ins_implement[1]);
+	_putstr(" ---> change directories.\n");
+	_putstr(" ");
+	_putstr(built_ins_implement[2]);
+	_putstr(" ---> displays the environment.\n");
+	_putstr(" ");
+	_putstr(built_ins_implement[3]);
+	_putstr(" ---> sets a new environment variable.\n");
+	_putstr(" ");
+	_putstr(built_ins_implement[4]);
+	_putstr(" ---> removes an environment variable.\n");
+	_putstr(" ");
+	_putstr(built_ins_implement[5]);
+	_putstr(" ---> displays the program manual\n");
+	_putstr("\n\nfor other commands use man + command_name.\n\n");
+
 	return (-1);
 }

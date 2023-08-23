@@ -13,7 +13,7 @@ int my_own_env(char **arg)
 
 	while (environ[n])
 	{
-		write(STDOUT_FILENO, environ[n], strlen(environ[n]));
+		write(STDOUT_FILENO, environ[n], my_strlen(environ[n]));
 		write(STDOUT_FILENO, "\n", 1);
 		n++;
 	}

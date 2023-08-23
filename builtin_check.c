@@ -18,7 +18,7 @@ int builtin_check(const char *command)
 
 	for (; i < sizeof(built_ins_implement) / sizeof(char *); i++)
 	{
-		if (strcmp(command, built_ins_implement[i]) == 0)
+		if (my_strcmp(command, built_ins_implement[i]) == 0)
 		{
 			return (1);
 		}

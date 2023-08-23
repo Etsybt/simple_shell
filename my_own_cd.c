@@ -10,7 +10,7 @@ int my_own_cd(char **arg)
 {
 	if (arg[1] == NULL)
 	{
-		fprintf(stderr, "Usage: cd DIRECTORY\n");
+		perror("Usage: cd DIRECTORY");
 	}
 	else
 	{

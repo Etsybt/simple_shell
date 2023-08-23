@@ -7,16 +7,13 @@ char *my_getline(void)
 {
 	int size = 1024;
 	int line = 0, i;
-	char *input = malloc(sizeof(char) * size);
-	char *new_input;
-
+	char *input = malloc(sizeof(char) * size), *new_input;
 
 	if (!input)
 	{
-		fprintf(stderr, "couldn't allocate");
+		perror("couldn't allocate");
 		exit(EXIT_FAILURE);
 	}
-
 	while (1)
 	{
 		i = getchar();
@@ -39,7 +36,7 @@ char *my_getline(void)
 
 			if (!new_input)
 			{
-				fprintf(stderr, "error\n");
+				perror("error");
 				free(input);
 				exit(EXIT_FAILURE);
 			}

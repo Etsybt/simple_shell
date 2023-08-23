@@ -30,7 +30,7 @@ int builtin_execute(const char *command, char **arg, ShellInfo *info)
 
 	for (; i < sizeof(built_ins) / sizeof(built_ins[0]); i++)
 	{
-		if (strcmp(command, built_ins_implement[i]) == 0)
+		if (my_strcmp(command, built_ins_implement[i]) == 0)
 		{
 			return ((*built_ins[i])(arg));
 		}

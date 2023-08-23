@@ -10,7 +10,7 @@ int my_own_exit(char **arg)
 {
 	if (arg[1])
 	{
-		return (atoi(arg[1]));
+		return (my_atoi(arg[1]));
 	}
 	else
 	{

@@ -14,7 +14,7 @@ void shell_repl(ShellInfo *info)
 
 	while (1)
 	{
-		printf("Nouha_SHELL$ ");
+		_putstr("Nouha_SHELL$ ");
 
 		input = my_getline();
 

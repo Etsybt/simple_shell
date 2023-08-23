@@ -10,7 +10,7 @@ char *standard_stream(void)
 
 	if (input == NULL)
 	{
-		fprintf(stderr, "allocation error");
+		perror("allocation error");
 		exit(EXIT_FAILURE);
 	}
 	while (1)
@@ -40,7 +40,7 @@ char *standard_stream(void)
 
 			if (input == NULL)
 			{
-				fprintf(stderr, "reallocation error");
+				perror("reallocation error");
 				exit(EXIT_FAILURE);
 			}
 		}

@@ -20,7 +20,7 @@ int expand_variables(char **arg)
 			if (variable_value != NULL)
 			{
 				free(arg[i]);
-				arg[i] = strdup(variable_value);
+				arg[i] = my_strdup(variable_value);
 			}
 		}
 	}

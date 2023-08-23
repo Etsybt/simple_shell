@@ -16,7 +16,7 @@ int track_command(char **arg, ShellInfo *info)
 
 	for (; arg[i] != NULL; i++)
 	{
-		if (strcmp(arg[i], "$$") == 0)
+		if (my_strcmp(arg[i], "$$") == 0)
 		{
 			free(arg[i]);
 			arg[i] = malloc(10);
