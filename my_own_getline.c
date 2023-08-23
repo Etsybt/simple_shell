@@ -32,7 +32,8 @@ char *my_getline(void)
 		if (line >= size)
 		{
 			size += size;
-			new_input = _realloc(input, size * sizeof(char), size * 2 * sizeof(char));
+			new_input = my_own_realloc(input, size * sizeof(char),
+					size * 2 * sizeof(char));
 
 			if (!new_input)
 			{

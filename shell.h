@@ -24,8 +24,7 @@ extern char **environ;
 
 
 #define WHITESPACE_DELIM " \t\r\n\a\""
-
-char **my_realloc(char **str, size_t *size, size_t new_size);
+void *my_own_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 
 /* ---- main functions ---- */
@@ -41,16 +40,14 @@ char *my_strchr(const char *str, int c);
 char *my_strncpy(char *dest, const char *src, size_t n);
 
 
+/* ---- my own strtok -----*/
 char **allocate_initial_memory(size_t size);
-
-
-char *_memset(char *s, char b, unsigned int n);
-void ffree(char **pp);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-
+char *my_realloc(char **str, size_t *size, size_t new_size);
 void add_token(char **str, size_t *n, size_t *size,
 		const char *start, const char *end);
 char **my_strtok2(char *input);
+
+
 
 int my_strcmp(const char *s1, const char *s2);
 

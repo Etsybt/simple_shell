@@ -30,7 +30,7 @@ char **realloc_memory(char **str, size_t *size)
 
 	*size += *size;
 
-	new_str = _realloc(str, *size * sizeof(char *), *size * sizeof(char *));
+	new_str = my_own_realloc(str, *size * sizeof(char *), *size * sizeof(char *));
 
 	if (!new_str)
 	{
@@ -102,7 +102,8 @@ char **my_strtok2(char *input)
 
 	if (n < size)
 	{
-		new_str = _realloc(str, size * sizeof(char *), (n + 1) * sizeof(char *));
+		new_str = my_own_realloc(str, size * sizeof(char *),
+				(n + 1) * sizeof(char *));
 
 		if (new_str)
 		{

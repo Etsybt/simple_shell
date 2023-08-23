@@ -36,7 +36,7 @@ char *standard_stream(void)
 		if (n >= size)
 		{
 			size += size;
-			input = _realloc(input, size * sizeof(char), size * 2 * sizeof(char));
+			input = my_own_realloc(input, size * sizeof(char), size * 2 * sizeof(char));
 
 			if (input == NULL)
 			{
