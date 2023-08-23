@@ -22,7 +22,10 @@ typedef struct
 extern char **environ;
 
 
+
 #define WHITESPACE_DELIM " \t\r\n\a\""
+
+char **my_realloc(char **str, size_t *size, size_t new_size);
 
 
 /* ---- main functions ---- */
@@ -39,7 +42,12 @@ char *my_strncpy(char *dest, const char *src, size_t n);
 
 
 char **allocate_initial_memory(size_t size);
-char **realloc_memory(char **str, size_t *size);
+
+
+char *_memset(char *s, char b, unsigned int n);
+void ffree(char **pp);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+
 void add_token(char **str, size_t *n, size_t *size,
 		const char *start, const char *end);
 char **my_strtok2(char *input);

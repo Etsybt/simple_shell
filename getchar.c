@@ -5,14 +5,18 @@
   */
 int my_getchar(void)
 {
-	char c;
+	static char buffer[1024];
+	static int position = 0;
+	static int bytesRead = 0;
 
-	if (read(STDIN_FILENO, &c, 1) == 1)
+	if (position >= bytesRead)
 	{
-		return ((unsigned char)c);
+		bytesRead = read(STDIN_FILENO, buffer, sizeof(buffer));
+		if (bytesRead <= 0)
+		{
+			return EOF;
+		}
+		position = 0;
 	}
-	else
-	{
-		return (EOF);
-	}
+	return buffer[position++];
 }

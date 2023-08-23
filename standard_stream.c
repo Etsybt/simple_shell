@@ -15,7 +15,7 @@ char *standard_stream(void)
 	}
 	while (1)
 	{
-		chars = getchar();
+		chars = my_getchar();
 
 		if (chars == EOF)
 		{
@@ -36,7 +36,7 @@ char *standard_stream(void)
 		if (n >= size)
 		{
 			size += size;
-			input = realloc(input, size);
+			input = _realloc(input, size * sizeof(char), size * 2 * sizeof(char));
 
 			if (input == NULL)
 			{

@@ -16,7 +16,7 @@ char *my_getline(void)
 	}
 	while (1)
 	{
-		i = getchar();
+		i = my_getchar();
 
 		if (i == EOF || i == '\n')
 		{
@@ -32,7 +32,7 @@ char *my_getline(void)
 		if (line >= size)
 		{
 			size += size;
-			new_input = realloc(input, size);
+			new_input = _realloc(input, size * sizeof(char), size * 2 * sizeof(char));
 
 			if (!new_input)
 			{
