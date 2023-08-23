@@ -12,7 +12,6 @@ int builtin_check(const char *command)
 		"env",
 		"setenv",
 		"unsetenv",
-		"help"
 	};
 	unsigned int i = 0;
 

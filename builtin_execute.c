@@ -16,7 +16,6 @@ int builtin_execute(const char *command, char **arg, ShellInfo *info)
 		"env",
 		"setenv",
 		"unsetenv",
-		"help"
 	};
 	int (*built_ins[])(char **) = {
 		&my_own_exit,
@@ -24,7 +23,6 @@ int builtin_execute(const char *command, char **arg, ShellInfo *info)
 		&my_own_env,
 		&my_own_setenv,
 		&my_own_unsetenv,
-		&my_own_help
 	};
 	(void)(*info);
 
