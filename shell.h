@@ -9,7 +9,12 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-typedef struct {
+/**
+  * ShellInfo - main
+  * @last_exit_status: Holds the exit status of the last executed command
+  */
+typedef struct
+{
 	int last_exit_status;
 } ShellInfo;
 
