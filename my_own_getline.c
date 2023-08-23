@@ -8,6 +8,7 @@ char *my_getline(void)
 	int size = 1024;
 	int line = 0, i;
 	char *input = malloc(sizeof(char) * size);
+	char *new_input;
 
 
 	if (!input)
@@ -34,13 +35,15 @@ char *my_getline(void)
 		if (line >= size)
 		{
 			size += size;
-			input = realloc(input, size);
+			new_input = realloc(input, size);
 
-			if (!input)
+			if (!new_input)
 			{
 				fprintf(stderr, "error\n");
+				free(input);
 				exit(EXIT_FAILURE);
 			}
+			input = new_input;
 		}
 	}
 }
