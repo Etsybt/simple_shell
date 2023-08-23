@@ -7,7 +7,8 @@
 char **my_strtok(char *input)
 {
 	int size = 64, n = 0;
-	char **str = malloc(size * sizeof(char *)), *start = input, *end = input;
+	char **str = malloc(size * sizeof(char *)),
+	     *start = input, *end = input, **new_str;
 
 	if (!str)
 	{
@@ -34,16 +35,26 @@ char **my_strtok(char *input)
 			if (n >= size)
 			{
 				size += size;
-				str = realloc(str, size * sizeof(char *));
+				new_str = realloc(str, size * sizeof(char *));
 
-				if (!str)
+				if (!new_str)
 				{
 					fprintf(stderr, "ERROR: could not reallocate\n");
 					exit(EXIT_FAILURE);
 				}
+				str = new_str;
 			}
 		}
 	}
 	str[n] = NULL;
+
+	if (n < size)
+	{
+		new_str = realloc(str, (n + 1) * sizeof(char *));
+		if (new_str)
+		{
+			str = new_str;
+		}
+	}
 	return (str);
 }

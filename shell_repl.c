@@ -10,7 +10,7 @@ void shell_repl(ShellInfo *info)
 	char *input;
 	char **arg;
 	int status;
-	int i = 0;
+	int i;
 
 	while (1)
 	{
@@ -36,7 +36,7 @@ void shell_repl(ShellInfo *info)
 
 		free(input);
 
-		for (; arg[i] != NULL; i++)
+		for (i = 0; arg[i] != NULL; i++)
 		{
 			free(arg[i]);
 		}
