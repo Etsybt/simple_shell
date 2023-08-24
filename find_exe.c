@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+  * find_executable - finds executable
+  * @file: file
+  * Return: void
+  */
 char *find_executable(const char *file)
 {
 	char *path;
@@ -14,11 +19,12 @@ char *find_executable(const char *file)
 
 	if (file[0] == '/')
 	{
-		if (stat(file, &statbuf) == 0 && S_ISREG(statbuf.st_mode) && (statbuf.st_mode & S_IXUSR))
+		if (stat(file, &statbuf) == 0 && S_ISREG(statbuf.st_mode)
+				&& (statbuf.st_mode & S_IXUSR))
 		{
-			return strdup(file);
+			return (strdup(file));
 		}
-		return NULL;
+		return (NULL);
 	}
 
 	while (dir != NULL)
@@ -27,12 +33,13 @@ char *find_executable(const char *file)
 
 		snprintf(full_path, sizeof(full_path), "%s/%s", dir, file);
 
-		if (stat(full_path, &statbuf) == 0 && S_ISREG(statbuf.st_mode) && (statbuf.st_mode & S_IXUSR))
+		if (stat(full_path, &statbuf) == 0 && S_ISREG(statbuf.st_mode)
+				&& (statbuf.st_mode & S_IXUSR))
 		{
 			executable_path = my_strdup(full_path);
 			break;
 		}
 		dir = strtok(NULL, ":");
 	}
-	return (executable_path);
+	return ((executable_path));
 }

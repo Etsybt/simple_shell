@@ -1,5 +1,10 @@
 #include "shell.h"
-
+/**
+  * int_to_str - convert from int to str
+  * @num: number
+  * @str: string
+  * Return: void
+  */
 void int_to_str(int num, char *str)
 {
 	int i = 0;

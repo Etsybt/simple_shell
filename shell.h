@@ -28,6 +28,12 @@ typedef struct
 extern char **environ;
 
 
+
+/**
+  * struct AllocatedTokens - main
+  * @tokens: tokens
+  * @count: count
+  */
 struct AllocatedTokens
 {
 	char **tokens;

@@ -5,16 +5,14 @@
   */
 char *my_getline(void)
 {
-	int size = 1024;
-	int line = 0, i;
+	int size = 1024, line = 0, i;
 	char *input = malloc(sizeof(char) * size), *new_input;
 
 	if (!input)
 	{
 		perror("couldn't allocate");
 		exit(EXIT_FAILURE);
-	}
-	while (1)
+	} while (1)
 	{
 		i = my_getchar();
 
@@ -45,5 +43,5 @@ char *my_getline(void)
 		}
 	}
 	free(input);
-	return NULL;
+	return (NULL);
 }

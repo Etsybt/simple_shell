@@ -11,11 +11,9 @@ char **my_strtok(char *input)
 	     *start = input, *end = input, **new_str;
 
 	if (!str)
-	{
-		perror("ERROR: malloc");
+	{ perror("ERROR: malloc");
 		exit(EXIT_FAILURE);
-	}
-	while (*end != '\0')
+	} while (*end != '\0')
 	{
 		while (*end && my_strchr(WHITESPACE_DELIM, *end))
 			end++;
@@ -24,8 +22,7 @@ char **my_strtok(char *input)
 		while (*end && !my_strchr(WHITESPACE_DELIM, *end))
 			end++;
 		if (start != end)
-		{
-			size_t token_len = end - start;
+		{   size_t token_len = end - start;
 
 			str[n] = malloc((token_len + 1) * sizeof(char));
 			my_strncpy(str[n], start, token_len);
@@ -33,27 +30,19 @@ char **my_strtok(char *input)
 			n++;
 
 			if (n >= size)
-			{
-				size += size;
-				new_str = realloc(str, size * sizeof(char *));
+			{      size += size;
+				new_str = my_own_realloc(str, size * sizeof(char *),
+						(n + 1) * sizeof(char *));
 
 				if (!new_str)
-				{
-					perror("ERROR: realloc");
+				{       perror("ERROR: realloc");
 					exit(EXIT_FAILURE);
-				}
-				str = new_str;
-			}
-		}
-	}
-	str[n] = NULL;
-
+				} str = new_str;
+			}}} str[n] = NULL;
 	if (n < size)
-	{
-		new_str = realloc(str, (n + 1) * sizeof(char *));
+	{ new_str = realloc(str, (n + 1) * sizeof(char *));
 
 		if (new_str)
 			str = new_str;
-	}
-	return (str);
+	} return (str);
 }
