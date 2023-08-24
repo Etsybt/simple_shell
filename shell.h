@@ -56,7 +56,7 @@ char *my_getline(void);
 
 char *my_strchr(const char *str, int c);
 char *my_strncpy(char *dest, const char *src, size_t n);
-char *my_strcpy(char *dest, char *src);
+char *my_strcpy(char *dest, const char *src);
 
 /* ---- my own strtok -----*/
 char **allocate_initial_memory(size_t size);

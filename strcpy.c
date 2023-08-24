@@ -6,7 +6,7 @@
  * @src: Source value
  * Return: dest
  */
-char *my_strcpy(char *dest, char *src)
+char *my_strcpy(char *dest, const char *src)
 {
 	int i;
 

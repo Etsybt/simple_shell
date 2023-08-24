@@ -7,15 +7,14 @@
   */
 char *find_executable(const char *file)
 {
-	char *path;
-	char *dir;
-	char *executable_path;
+	char *path, *dir, *executable_path;
 	struct stat statbuf;
+	int dir_len, file_len;
+	char *full_path;
 
 	path = getenv("PATH");
 	dir = strtok(path, ":");
 	executable_path = NULL;
-
 
 	if (file[0] == '/')
 	{
@@ -23,23 +22,29 @@ char *find_executable(const char *file)
 				&& (statbuf.st_mode & S_IXUSR))
 		{
 			return (strdup(file));
-		}
-		return (NULL);
-	}
-
-	while (dir != NULL)
+		} return (NULL);
+	} while (dir != NULL)
 	{
-		char full_path[MAX_PATH_LENGTH];
+		dir_len = my_strlen(dir);
+		file_len = my_strlen(file);
+		full_path = malloc(dir_len + file_len + 2);
 
-		snprintf(full_path, sizeof(full_path), "%s/%s", dir, file);
+		if (!full_path)
+		{
+			perror("malloc");
+			exit(EXIT_FAILURE);
+		}
+		my_strcpy(full_path, dir);
+		full_path[dir_len] = '/';
+		my_strcpy(full_path + dir_len + 1, file);
 
 		if (stat(full_path, &statbuf) == 0 && S_ISREG(statbuf.st_mode)
 				&& (statbuf.st_mode & S_IXUSR))
 		{
 			executable_path = my_strdup(full_path);
+			free(full_path);
 			break;
-		}
+		} free(full_path);
 		dir = strtok(NULL, ":");
-	}
-	return ((executable_path));
+	} return ((executable_path));
 }
