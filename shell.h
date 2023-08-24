@@ -97,6 +97,5 @@ int my_own_cd(char **arg);
 int my_own_env(char **arg);
 int my_own_setenv(char **arg);
 int my_own_unsetenv(char **arg);
-int my_own_help(char **arg);
 
 #endif /* SHELL_H */
